@@ -57,6 +57,62 @@ body {
     background-color: rgba(255, 255, 255, 0.2); /* Light highlight on hover */
 }
 
+.flex-center {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* Login form styles */
+.login-form {
+    width: 23vw;
+    margin: 2rem auto;
+    padding: 1.9rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="password"] {
+    transform-box: view-box;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+}
+
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     body {
@@ -83,5 +139,8 @@ body {
     }
     .navbar-links li {
         margin: 0.5rem 0; /* Vertical spacing between links */
+    }
+    .login-form {
+        max-width: 90%;
     }
 }
