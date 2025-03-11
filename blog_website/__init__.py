@@ -29,12 +29,12 @@ def create_app():
     login_manager.login_view = "views.login"
     login_manager.init_app(app)
 
+
+    create_database(app)
+
     @login_manager.user_loader
     def user_loader(id):
         return User.query.get(int(id))
-
-
-    create_database(app)
 
     return app
 
