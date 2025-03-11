@@ -21,6 +21,15 @@ def create_app():
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
 
+    #import models
+    from .models import User
+
+    # initialize login manager
+    login_manager = LoginManager()
+    login_manager.login_view = "views.login"
+    login_manager.init_app(app)
+
+
     create_database(app)
 
     return app
