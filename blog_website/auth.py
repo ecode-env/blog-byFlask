@@ -8,3 +8,6 @@ def login():
     return "<h1>Login</h1>"
 
 
+@auth.route("/sign-up")
+def login():
+    return "<h1>Sigh up</h1>"
