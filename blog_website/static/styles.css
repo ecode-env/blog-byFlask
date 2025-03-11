@@ -48,6 +48,7 @@ body {
 /* Link styles with hover effect */
 .navbar-links a {
     color: white;
+    font-size: large;
     text-decoration: none;
     padding: 0.5rem 1rem;
     transition: background-color 0.3s ease; /* Smooth hover transition */
@@ -66,7 +67,7 @@ body {
 }
 /* Login form styles */
 .login-form {
-    width: 23vw;
+    min-width: 25rem;
     margin: 2rem auto;
     padding: 1.9rem;
     background-color: #fff;
@@ -90,14 +91,28 @@ label {
 
 input[type="text"],
 input[type="password"] {
-    transform-box: view-box;
+    box-sizing:border-box;
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 3px;
 
 }
+.signup-link{
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+}
 
+.signup-link a{
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover{
+    text-decoration: underline;
+}
 
 button {
     width: 100%;
