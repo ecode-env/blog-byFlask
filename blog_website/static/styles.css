@@ -1,0 +1,87 @@
+/* Reset default body margin and set padding to account for fixed nav bar */
+body {
+    margin: 0;
+    padding-top: 60px; /* Matches nav bar height to prevent overlap */
+}
+
+/* Full-width nav bar, fixed at the top */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #007bff; /* A vibrant blue */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    z-index: 1000; /* Keeps nav bar above other content */
+}
+
+/* Container to constrain content width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Flexbox layout for nav bar content */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; /* Fills nav bar height */
+}
+
+/* Stylish brand name */
+.navbar-brand {
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Horizontal list of links */
+.navbar-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Link styles with hover effect */
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.navbar-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Light highlight on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    body {
+        padding-top: 0; /* No padding since nav bar isn’t fixed */
+    }
+    .navbar {
+        position: static; /* Becomes part of the flow */
+        height: auto; /* Expands to fit content */
+        padding: 1rem 0; /* Vertical padding */
+    }
+    .navbar .container {
+        flex-direction: column; /* Stack brand and links */
+        align-items: center;
+    }
+    .navbar-links {
+        margin-top: 0.5rem; /* Space between brand and links */
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-links {
+        flex-direction: column; /* Stack links vertically */
+        align-items: center;
+    }
+    .navbar-links li {
+        margin: 0.5rem 0; /* Vertical spacing between links */
+    }
+}
