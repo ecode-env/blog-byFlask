@@ -5,4 +5,4 @@ views = Blueprint("views", __name__)
 
 @views.route("/")
 def home():
-    return "<h>home</h>"
+    return "<h1>home</h1>"
