@@ -9,10 +9,10 @@ def login():
 
 
 @auth.route("/sign-up")
-def login():
+def sign_up():
     return "<h1>Sigh up</h1>"
 
 
 @auth.route("/logout")
-def login():
+def logout():
     return "<h1>Logout</h1>"
