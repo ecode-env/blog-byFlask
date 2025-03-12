@@ -53,8 +53,8 @@ def sign_up():
             flash(message='Username must be at least 3 characters.', category='error')
         elif not re.match(r'^[\w\.-]+@[\w\.-]+\.\w{2,4}$', email):
             flash(message='Invalid email format.', category='error')
-        elif len(password1) < 8:
-            flash(message='Password must be at least 8 characters.', category='error')
+        elif len(password1) < 6:
+            flash(message='Password must be at least 6 characters.', category='error')
         else:
             # noinspection PyArgumentList
             new_user = User(
@@ -72,6 +72,7 @@ def sign_up():
 
 
 @auth.route("/logout")
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('views.home'))
