@@ -16,7 +16,6 @@ def login():
 
         # Check if email and password are provided
         if not email or not password1:
-            print('hello')
             flash(message='Please provide both email and password.', category='error')
             return render_template('login.html')
 
