@@ -14,6 +14,19 @@ def login():
         email = request.form.get('email')
         password1 = request.form.get('password1')
 
+        user = User.query.filter_by(email=email).first()
+
+        if user:
+            if check_password_hash(password1, user.password):
+                flash(message='Logged in!', category='success')
+                login_user(user, remember=True)
+                return redirect(url_for('views.home'))
+            else:
+                flash('Password is incorrect!')
+        else:
+            flash(message='Email doesn\'t exist.', category='error')
+
+
     return render_template('login.html')
 
 
