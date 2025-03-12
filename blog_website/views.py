@@ -14,4 +14,4 @@ def home():
 @views.route('/create-post')
 @login_required
 def create_post():
-    return render_template('create_post.html')
+    return render_template('create_post.html', user=current_user)
