@@ -19,6 +19,28 @@
         </div>
     </nav>
 </div>
+{% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <div class="flash-container">
+            {% for category, message in messages %}
+                <div class="{{ category }} flash-message">
+                    {{ message }}
+                    <span class="close-btn">X</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+# content
 {% block content %}{% endblock %}
+<script>
+    document.querySelectorAll('.close-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const message = this.parentElement; // Get the parent flash-message div
+            message.classList.add('hidden'); // Start fade-out
+            setTimeout(() => message.style.display = 'none', 300); // Remove after fade
+        });
+    });
+</script>
 </body>
 </html>
