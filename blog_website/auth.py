@@ -12,7 +12,13 @@ auth = Blueprint("auth", __name__)
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
-        password1 = request.form.get('password1')
+        password1 = request.form.get('password')
+
+        # Check if email and password are provided
+        if not email or not password1:
+            print('hello')
+            flash(message='Please provide both email and password.', category='error')
+            return render_template('login.html')
 
         user = User.query.filter_by(email=email).first()
 
