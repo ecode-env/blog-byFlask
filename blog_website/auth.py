@@ -17,7 +17,7 @@ def login():
         # Check if email and password are provided
         if not email or not password1:
             flash(message='Please provide both email and password.', category='error')
-            return render_template('login.html')
+            return render_template('login.html',user=current_user)
 
         user = User.query.filter_by(email=email).first()
 
@@ -72,7 +72,7 @@ def sign_up():
             flash(message='Account created successfully!', category='success')
             return redirect(url_for('views.home'))
 
-    return render_template('signup.html')
+    return render_template('signup.html', user=current_user)
 
 
 @auth.route("/logout")
