@@ -13,12 +13,12 @@
             <div class="navbar-brand">eyob-blog</div>
             <ul class="navbar-links">
                 <li><a href="/home">Home</a></li>
-                {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
                 <li><a href="/logout">Logout</a></li>
-                {% else %}
+            {% else %}
                 <li><a href="/login">Login</a></li>
                 <li><a href="/sign-up">Sign Up</a></li>
-                {% endif %}
+            {% endif %}
             </ul>
         </div>
     </nav>
