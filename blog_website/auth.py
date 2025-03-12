@@ -1,4 +1,10 @@
-from flask import Blueprint, render_template, redirect, url_for, request
+import re
+from flask import Blueprint, render_template, redirect, url_for, request, flash
+from .models import User
+from . import db
+from flask_login import login_user, login_required, logout_user
+from werkzeug.security import generate_password_hash,check_password_hash
+
 
 auth = Blueprint("auth", __name__)
 
@@ -19,7 +25,34 @@ def sign_up():
         username = request.form.get('username')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
-        print(password2)
+
+        email_exists = User.query.filter_by(email=email).first()
+        username_exists = User.query.filter_by(username=username).first()
+
+        # Validation checks
+        if email_exists:
+            flash(message='Email already exists. Please login.', category='error')
+        elif username_exists:
+            flash(message='Username is already in use.', category='error')
+        elif password1 != password2:
+            flash(message='Passwords do not match.', category='error')
+        elif len(username) < 3:
+            flash(message='Username must be at least 3 characters.', category='error')
+        elif not re.match(r'^[\w\.-]+@[\w\.-]+\.\w{2,4}$', email):
+            flash(message='Invalid email format.', category='error')
+        elif len(password1) < 8:
+            flash(message='Password must be at least 8 characters.', category='error')
+        else:
+            # noinspection PyArgumentList
+            new_user = User(
+                email=email,
+                username=username,
+                password=generate_password_hash(password1,method='pbkdf2:sha256'))
+
+            db.session.add(new_user)
+            db.session.commit()
+            flash('Account created successfully!', 'success')
+            return redirect(url_for('views.home'))
 
     return render_template('signup.html')
 
