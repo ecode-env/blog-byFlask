@@ -31,7 +31,7 @@ def login():
         else:
             flash(message='Email doesn\'t exist.', category='error')
 
-    return render_template('login.html')
+    return render_template('login.html', user=current_user)
 
 
 
