@@ -190,6 +190,11 @@ button:hover {
         color: black;
         border-color: red;
     }
+    .message {
+        background-color: #ffcc00;
+        color: black;
+        border-color: yellow;
+    }
 
     .close-btn {
         position: absolute;
