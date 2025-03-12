@@ -31,15 +31,23 @@
         </div>
     {% endif %}
 {% endwith %}
-# content
 {% block content %}{% endblock %}
 <script>
-    document.querySelectorAll('.close-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            const message = this.parentElement; // Get the parent flash-message div
+    document.querySelectorAll('.flash-message').forEach(function(message) {
+        // Automatically hide after 2 seconds
+        setTimeout(function() {
             message.classList.add('hidden'); // Start fade-out
             setTimeout(() => message.style.display = 'none', 300); // Remove after fade
-        });
+        }, 2000); // 2000ms = 2 seconds
+
+        // Manual close button functionality
+        const closeBtn = message.querySelector('.close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                message.classList.add('hidden'); // Start fade-out
+                setTimeout(() => message.style.display = 'none', 300); // Remove after fade
+            });
+        }
     });
 </script>
 </body>
