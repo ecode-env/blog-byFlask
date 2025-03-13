@@ -14,7 +14,7 @@ def create_app():
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
     app.config['CKEDITOR_PKG_TYPE'] = 'basic'
     db.init_app(app)
-    ckeditor = CKEditor(app)
+    CKEditor(app)
 
     from .views import views
     from .auth import auth
