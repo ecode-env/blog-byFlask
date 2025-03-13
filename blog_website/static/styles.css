@@ -21,7 +21,10 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
-
+.navbar .navbar-brand a{
+    text-decoration: none;
+    color: inherit;
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
