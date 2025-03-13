@@ -204,6 +204,37 @@ body {
     transition: opacity 0.3s ease;
 }
 
+/* Home page layout */
+.body-flex {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.body-flex .post-btn {
+    position: absolute;
+    left: 75%;
+    height: 10rem;
+}
+
+.body-flex .post-btn button {
+    height: fit-content;
+    margin-top: 8rem;
+    margin-left: 5rem;
+    background-color: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: auto;
+}
+
+.body-flex .post-btn button:hover {
+    background-color: #0056b3;
+}
+
 /* Posts container */
 .posts-container {
     max-width: 800px;
@@ -473,10 +504,4 @@ body {
     .posts-container .post-preview .post-meta .action-span {
         margin-top: 0.5rem;
     }
-}
-/* CKEDITOR  */
-.ckeditor-content img {
-    display: block;
-    margin: 0 auto;
-    background-color: red;
 }
