@@ -40,8 +40,17 @@
             </div>
         </div>
         {% endfor %}
-    {% else %}
+        {% else %}
         <p>No posts available yet.</p>
+        {% endif %}
+
+    </div>
+    {% if user.is_admin  %}
+    <div class="post-btn">
+        <a href="/create-post"> <button type="submit">Create Post</button></a>
+
+    </div>
     {% endif %}
+
 </div>
 {% endblock %}
