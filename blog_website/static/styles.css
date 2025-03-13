@@ -279,3 +279,180 @@ button:hover {
         max-width: 90%;
     }
 }
+/* Posts container for home page */
+.posts-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.posts-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Post preview styling */
+.posts-container .post-preview {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.posts-container .post-preview h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.posts-container .post-preview h3 a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.posts-container .post-preview h3 a:hover {
+    text-decoration: underline;
+}
+
+.posts-container .post-preview .inner-content {
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.posts-container .post-preview .inner-content a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.posts-container .post-preview .inner-content a:hover {
+    text-decoration: underline;
+}
+
+/* Metadata styling */
+.posts-container .post-preview .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.posts-container .post-preview .post-meta span {
+    margin-right: 1rem;
+}
+
+/* Shared span styling to act like buttons */
+.posts-container .post-preview .post-meta .action-span {
+    background-color: #f0f0f0;
+    color: #666;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Specific styling for like-span with text */
+.posts-container .post-preview .post-meta .like-span {
+    width: auto;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    gap: 0.3rem;
+}
+
+.posts-container .post-preview .post-meta .action-span:hover {
+    background-color: #e0e0e0;
+}
+
+/* Icon styling */
+.posts-container .post-preview .post-meta .action-span i {
+    font-size: 1rem;
+}
+
+/* Like span clicked state */
+.posts-container .post-preview .post-meta .like-span.clicked {
+    color: #ff4500;
+    background-color: #ffe6e6;
+}
+
+.posts-container .post-preview .post-meta .like-span.clicked:hover {
+    background-color: #ffd6d6;
+}
+
+/* Comment span */
+.posts-container .post-preview .post-meta .comment-span {
+    color: #007bff;
+}
+
+.posts-container .post-preview .post-meta .comment-span:hover {
+    background-color: #cce5ff;
+}
+
+/* Delete span */
+.posts-container .post-preview .post-meta .delete-span {
+    color: #dc3545;
+}
+
+.posts-container .post-preview .post-meta .delete-span:hover {
+    background-color: #f8d7da;
+}
+
+/* Comment area styling */
+.posts-container .post-preview .comment-area {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.posts-container .post-preview .comment-area .comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.posts-container .post-preview .comment-area .comment-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    resize: vertical;
+}
+
+.posts-container .post-preview .comment-area .comment-form .comment-submit-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.posts-container .post-preview .post-meta .comment-area .comment-form .comment-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .posts-container {
+        max-width: 90%;
+    }
+    .posts-container .post-preview .post-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .posts-container .post-preview .post-meta .action-span {
+        margin-top: 0.5rem;
+    }
+}
