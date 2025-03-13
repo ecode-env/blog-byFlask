@@ -44,3 +44,18 @@ def create_post():
 def post(post_id):
     get_post = Post.query.filter_by(id=post_id).first_or_404()
     return render_template('post.html', user=current_user, post=get_post)
+
+# Delete route
+
+@views.route('/delete-post/<id>')
+@login_required
+@admin_required
+def delete_post(id):
+    post =  Post.query.filter_by(id=id).first()
+    if not post:
+        return redirect(url_for('views.home'))
+    else:
+        db.session.delete(post)
+        db.session.commit()
+        flash('Post deleted!', category='success')
+    return redirect(url_for('views.home'))
