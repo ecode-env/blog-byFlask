@@ -2,7 +2,39 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>hell home</h1>
+<div class="posts-container">
+    <h2>Welcome to Eyob's Blog</h2>
+    {% if posts %}
+        {% for post in posts %}
+            <div class="post-preview">
+                <h3><a href="/post/{{ post.id }}">{{ post.title }}</a></h3>
+                <p class="inner-content">
+                    {% if post.text %}
+                        {{ post.text[:900] | safe }}{% if post.text|length > 100 %}...
+                            <a href="/post/{{ post.id }}">Read more</a>
+                        {% endif %}
+                    {% else %}
+                        No text available.
+                    {% endif %}
+                </p>
+                <div class="post-meta">
+                    <div>
+                        <span class="action-span like-span" data-likes="{{ post.likes }}">{{ post.likes }} <i class="fa fa-thumbs-up"></i></span>
+                        <span class="action-span comment-span" data-comments="{{ post.comments|length }}"><i class="fa fa-comment"></i></span>
+                        <span>{{ post.author.name }}</span>
+                    </div>
+                    <span class="action-span delete-span"><i class="fa fa-trash"></i></span>
+                </div>
+                <div class="comment-area" style="display: none;">
+                    <form class="comment-form" method="post" action="/post/{{ post.id }}/comment">
+                        <textarea name="comment" placeholder="Add a comment..." rows="3"></textarea>
+                        <button type="submit" class="comment-submit-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No posts available yet.</p>
+    {% endif %}
 </div>
 {% endblock %}
