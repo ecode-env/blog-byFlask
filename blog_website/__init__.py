@@ -12,7 +12,9 @@ def create_app():
     app = Flask(__name__)
     app.config["SECRET_KEY"] = "hello this is eyob from flask."
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
+    app.config['CKEDITOR_PKG_TYPE'] = 'basic'
     db.init_app(app)
+    ckeditor = CKEditor(app)
 
     from .views import views
     from .auth import auth
