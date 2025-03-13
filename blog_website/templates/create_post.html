@@ -8,9 +8,9 @@
             <label for="title">Title</label>
             <input type="text" id="title" name="title" placeholder="Enter post title" required>
         </div>
-        <div class="form-group">
-            <label for="content">Content</label>
-            {{ ckeditor.create(id='content', name='content') }}
+        <div class="form-group ckeditor-content">
+            <label>Content</label>
+            {{ ckeditor.create( name='content') }}
         </div>
         <button type="submit">Submit Post</button>
 
