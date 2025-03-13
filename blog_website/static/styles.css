@@ -1,46 +1,45 @@
-/* Reset default body margin and set padding to account for fixed nav bar */
+/* Reset default body margin and set padding for fixed nav bar */
 body {
     margin: 0;
     padding-top: 60px; /* Matches nav bar height to prevent overlap */
 }
+
+/* Utility class for hidden elements */
 .hidden {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
-/* Full-width nav bar, fixed at the top */
+
+/* Navbar styles */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 60px;
-    background-color: #007bff; /* A vibrant blue */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    z-index: 1000; /* Keeps nav bar above other content */
+    background-color: #007bff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
-/* Container to constrain content width */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
 }
 
-/* Flexbox layout for nav bar content */
 .navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%; /* Fills nav bar height */
+    height: 100%;
 }
 
-/* Stylish brand name */
 .navbar-brand {
     color: white;
     font-size: 1.5rem;
 }
 
-/* Horizontal list of links */
 .navbar-links {
     display: flex;
     list-style: none;
@@ -48,19 +47,19 @@ body {
     padding: 0;
 }
 
-/* Link styles with hover effect */
 .navbar-links a {
     color: white;
     font-size: large;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease; /* Smooth hover transition */
+    transition: background-color 0.3s ease;
 }
 
 .navbar-links a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Light highlight on hover */
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Centering utility */
 .flex-center {
     width: 100vw;
     height: 80vh;
@@ -68,184 +67,41 @@ body {
     flex-direction: column;
     justify-content: center;
 }
-/* Login form styles */
+
+/* Shared form styles */
+.login-form, .create-post-form {
+    margin: 2rem auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .login-form {
     min-width: 25rem;
-    margin: 2rem auto;
     padding: 1.9rem;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.login-form h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-input[type="text"],
-input[type="password"] {
-    box-sizing:border-box;
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-
-}
-.signup-link{
-    text-align: center;
-    font-size: 14px;
-    margin-top: 20px;
-}
-
-.signup-link a{
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.signup-link a:hover{
-    text-decoration: underline;
-}
-
-button {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-    body {
-        padding-top: 0; /* No padding since nav bar isn’t fixed */
-    }
-    .navbar {
-        position: static; /* Becomes part of the flow */
-        height: auto; /* Expands to fit content */
-        padding: 1rem 0; /* Vertical padding */
-    }
-    .navbar .container {
-        flex-direction: column; /* Stack brand and links */
-        align-items: center;
-    }
-    .navbar-links {
-        margin-top: 0.5rem; /* Space between brand and links */
-    }
-}
-
-@media (max-width: 480px) {
-    .navbar-links {
-        flex-direction: column; /* Stack links vertically */
-        align-items: center;
-    }
-    .navbar-links li {
-        margin: 0.5rem 0; /* Vertical spacing between links */
-    }
-    .login-form {
-        max-width: 90%;
-    }
-}
-/* Alert */
-   .flash-container {
-        position: fixed; /* or absolute, depending on your needs */
-        top: 55px; /* Distance from the top */
-        left: 50%; /* Center horizontally */
-        transform: translateX(-50%); /* Offset to truly center it */
-        z-index: 1000; /* Ensure it’s above other content */
-        width: 90%; /* Adjust width as needed */
-        max-width: 600px; /* Optional: limit width */
-    }
-
-    .flash-message {
-        position: relative;
-        padding: 10px 30px 10px 10px; /* Space for the X button */
-        margin: 5px 0; /* Space between stacked messages */
-        border: none;
-        background-color: #fff; /* Ensure visibility over content */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow */
-    }
-
-    .success {
-        background-color:  #a0d0d4;
-        color: black;
-        border-color: green;
-    }
-
-    .error {
-        background-color:  #ff9696;
-        color: black;
-        border-color: red;
-    }
-    .message {
-        background-color: #ffcc00;
-        color: black;
-        border-color: yellow;
-    }
-
-    .close-btn {
-        position: absolute;
-        border: #cccccc solid 1px;
-        padding: 3px 5px;
-        top: 50%;
-        right: 10px;
-        transform: translateY(-50%);
-        cursor: pointer;
-        font-weight: bold;
-        color: #333;
-    }
-
-    .close-btn:hover {
-        color: #000;
-    }
-
-    .flash-message.hidden {
-        opacity: 0;
-        transition: opacity 0.3s ease; /* Fade-out effect */
-    }
-
-    /* Create post */
-
-/* Create post form styles */
 .create-post-form {
-    max-width: 600px; /* Wider than login form for textarea */
-    margin: 2rem auto;
+    max-width: 600px;
     padding: 1rem;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.create-post-form h2 {
+.login-form h2, .create-post-form h2 {
     text-align: center;
     margin-bottom: 1.5rem;
 }
 
-.create-post-form .form-group {
+.login-form .form-group, .create-post-form .form-group {
     margin-bottom: 1rem;
 }
 
-.create-post-form label {
+.login-form label, .create-post-form label {
     display: block;
     margin-bottom: 0.5rem;
 }
 
+.login-form input[type="text"],
+.login-form input[type="password"],
 .create-post-form input[type="text"],
 .create-post-form textarea {
     width: 100%;
@@ -256,10 +112,10 @@ button:hover {
 }
 
 .create-post-form textarea {
-    resize: vertical; /* Allows only vertical resizing */
+    resize: vertical;
 }
 
-.create-post-form button {
+.login-form button, .create-post-form button {
     width: 100%;
     padding: 0.75rem;
     background-color: #007bff;
@@ -269,17 +125,86 @@ button:hover {
     cursor: pointer;
 }
 
-.create-post-form button:hover {
+.login-form button:hover, .create-post-form button:hover {
     background-color: #0056b3;
 }
 
-/* Responsive adjustment */
-@media (max-width: 480px) {
-    .create-post-form {
-        max-width: 90%;
-    }
+/* Sign-up link */
+.signup-link {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
 }
-/* Posts container for home page */
+
+.signup-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Flash messages */
+.flash-container {
+    position: fixed;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+}
+
+.flash-message {
+    position: relative;
+    padding: 10px 30px 10px 10px;
+    margin: 5px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.success {
+    background-color: #a0d0d4;
+    color: black;
+    border-color: green;
+}
+
+.error {
+    background-color: #ff9696;
+    color: black;
+    border-color: red;
+}
+
+.message {
+    background-color: #ffcc00;
+    color: black;
+    border-color: yellow;
+}
+
+.close-btn {
+    position: absolute;
+    border: #cccccc solid 1px;
+    padding: 3px 5px;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.flash-message.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Posts container */
 .posts-container {
     max-width: 800px;
     margin: 2rem auto;
@@ -292,7 +217,6 @@ button:hover {
     color: #333;
 }
 
-/* Post preview styling */
 .posts-container .post-preview {
     background-color: #fff;
     border-radius: 5px;
@@ -329,7 +253,6 @@ button:hover {
     text-decoration: underline;
 }
 
-/* Metadata styling */
 .posts-container .post-preview .post-meta {
     display: flex;
     justify-content: space-between;
@@ -343,7 +266,6 @@ button:hover {
     margin-right: 1rem;
 }
 
-/* Shared span styling to act like buttons */
 .posts-container .post-preview .post-meta .action-span {
     background-color: #f0f0f0;
     color: #666;
@@ -358,7 +280,6 @@ button:hover {
     height: 2rem;
 }
 
-/* Specific styling for like-span with text */
 .posts-container .post-preview .post-meta .like-span {
     width: auto;
     padding: 0.3rem 0.6rem;
@@ -370,22 +291,19 @@ button:hover {
     background-color: #e0e0e0;
 }
 
-/* Icon styling */
 .posts-container .post-preview .post-meta .action-span i {
     font-size: 1rem;
 }
 
-/* Like span clicked state */
-.posts-container .post-preview .post-meta .like-span.clicked {
+.like-span.clicked {
     color: #ff4500;
     background-color: #ffe6e6;
 }
 
-.posts-container .post-preview .post-meta .like-span.clicked:hover {
+.like-span.clicked:hover {
     background-color: #ffd6d6;
 }
 
-/* Comment span */
 .posts-container .post-preview .post-meta .comment-span {
     color: #007bff;
 }
@@ -394,7 +312,6 @@ button:hover {
     background-color: #cce5ff;
 }
 
-/* Delete span */
 .posts-container .post-preview .post-meta .delete-span {
     color: #dc3545;
 }
@@ -403,33 +320,36 @@ button:hover {
     background-color: #f8d7da;
 }
 
-/* Comment area styling */
-.posts-container .post-preview .comment-area {
-    margin-top: 1rem;
+/* Shared comment area styles */
+.comment-area {
+    margin: 1rem 0;
     padding: 1rem;
     background-color: #f9f9f9;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.posts-container .post-preview .comment-area {
     transition: max-height 0.3s ease, opacity 0.3s ease;
     overflow: hidden;
 }
 
-.posts-container .post-preview .comment-area .comment-form {
+.comment-area .comment-form {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.posts-container .post-preview .comment-area .comment-form textarea {
+.comment-area .comment-form textarea {
     width: 100%;
-    box-sizing: border-box;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 3px;
     resize: vertical;
+    box-sizing: border-box;
 }
 
-.posts-container .post-preview .comment-area .comment-form .comment-submit-btn {
+.comment-area .comment-form .comment-submit-btn {
     background-color: #007bff;
     color: white;
     border: none;
@@ -439,16 +359,114 @@ button:hover {
     transition: background-color 0.3s ease;
 }
 
-.posts-container .post-preview .post-meta .comment-area .comment-form .comment-submit-btn:hover {
+.comment-area .comment-form .comment-submit-btn:hover {
     background-color: #0056b3;
 }
 
+/* Post container */
+.post-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-container h2 {
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.post-container p {
+    margin: 0.5rem 0 1rem;
+    color: #555;
+}
+
+.post-container .post-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.post-container .action-span {
+    background-color: #f0f0f0;
+    color: #666;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.post-container .action-span:hover {
+    background-color: #e0e0e0;
+}
+
+.post-container .comments-list {
+    margin: 1rem 0;
+}
+
+.post-container .comments-list h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.post-container .comments-list p {
+    margin: 0.5rem 0;
+    color: #555;
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+}
+
+.post-container .back-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.post-container .back-link:hover {
+    text-decoration: underline;
+}
+
 /* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding-top: 0;
+    }
+    .navbar {
+        position: static;
+        height: auto;
+        padding: 1rem 0;
+    }
+    .navbar .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar-links {
+        margin-top: 0.5rem;
+    }
+}
+
 @media (max-width: 480px) {
-    .posts-container {
+    .navbar-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar-links li {
+        margin: 0.5rem 0;
+    }
+    .login-form, .create-post-form, .posts-container, .post-container {
         max-width: 90%;
     }
-    .posts-container .post-preview .post-meta {
+    .posts-container .post-preview .post-meta, .post-container .post-meta {
         flex-direction: column;
         align-items: flex-start;
     }
