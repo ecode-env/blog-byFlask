@@ -4,9 +4,10 @@ from sqlalchemy.sql import func
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    email =db.Column(db.String(150), unique=True)
+    email = db.Column(db.String(150), unique=True)
     username = db.Column(db.String(150), unique=True)
     password = db.Column(db.String)
+    is_admin = db.Column(db.Boolean, default=False)  # Admin field
     post = db.relationship('Post', backref='user', passive_deletes=True)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
 
