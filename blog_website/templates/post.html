@@ -3,12 +3,13 @@
 
 {% block content %}
 <div class="post-container">
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.text }}</p>
+    <h2>{{ post.title | safe }}</h2>
+    <p>{{ post.text | safe }}</p>
     <div class="post-meta">
-        <span class="action-span like-span" data-likes="{{ post.likes }}">{{ post.likes }} <i class="fa fa-thumbs-up"></i></span>
-        <span>Comments: {{ post.comments|length }}</span>
-        <span>Author: {{ post.author.name }}</span>
+        <span class="action-span like-span" data-likes="{{ post.likes }}">{{ post.likes | length }} <i class="fa fa-thumbs-up"></i></span>
+        <span class="action-span comment-span" data-comments="{{ post.comments|length }}">{{ post.comments|length }}<i class="fa fa-comment"></i></span>
+
+<!--        <span>Author: {{ post.author.name }}</span>-->
     </div>
 
     <!-- Comment form for current user -->
