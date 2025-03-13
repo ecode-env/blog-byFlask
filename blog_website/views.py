@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
+from .decorators import admin_required
 from .models import Post
 from . import db
 
@@ -15,6 +16,7 @@ def home():
 
 @views.route('/create-post', methods=['GET','POST'])
 @login_required
+@admin_required
 def create_post():
     if request.method == 'POST':
         content = request.form.get('content')
