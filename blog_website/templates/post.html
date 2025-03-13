@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="post-container">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.text }}</p>
+    <div class="post-meta">
+        <span class="action-span like-span" data-likes="{{ post.likes }}">{{ post.likes }} <i class="fa fa-thumbs-up"></i></span>
+        <span>Comments: {{ post.comments|length }}</span>
+        <span>Author: {{ post.author.name }}</span>
+    </div>
+
+    <!-- Comment form for current user -->
+    <div class="comment-area">
+        <form class="comment-form" method="post" action="/post/{{ post.id }}/comment">
+            <textarea name="comment" placeholder="Add a comment..." rows="3"></textarea>
+            <button type="submit" class="comment-submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <!-- Existing comments -->
+    <div class="comments-list">
+        <h3>Comments</h3>
+        {% if post.comments %}
+            {% for comment in post.comments %}
+                <p>{{ comment }}</p>
+            {% endfor %}
+        {% else %}
+            <p>No comments yet.</p>
+        {% endif %}
+    </div>
+
+    <a href="/home" class="back-link">Back to Home</a>
+</div>
+{% endblock %}
