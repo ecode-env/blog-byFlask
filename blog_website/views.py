@@ -36,3 +36,9 @@ def create_post():
             return redirect(url_for('views.home'))
 
     return render_template('create_post.html', user=current_user)
+
+@views.route("/post/<int:post_id>")
+@login_required
+def post(post_id):
+    get_post = Post.query.filter_by(id=post_id).first_or_404()
+    return render_template('post.html', user=current_user, post=get_post)
