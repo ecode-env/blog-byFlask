@@ -14,27 +14,30 @@
             <div class="navbar-brand">eyob-blog</div>
             <ul class="navbar-links">
                 <li><a href="/home">Home</a></li>
-            {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
                 <li><a href="/logout">Logout</a></li>
-            {% else %}
+                {% else %}
                 <li><a href="/login">Login</a></li>
                 <li><a href="/sign-up">Sign Up</a></li>
-            {% endif %}
+                {% endif %}
+                {% if user.is_admin  %}
+                <li><a href="/create-post"> Create post</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
 </div>
 {% with messages = get_flashed_messages(with_categories=True) %}
-    {% if messages %}
-        <div class="flash-container">
-            {% for category, message in messages %}
-                <div class="{{ category }} flash-message">
-                    {{ message }}
-                    <span class="close-btn">X</span>
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
+{% if messages %}
+<div class="flash-container">
+    {% for category, message in messages %}
+    <div class="{{ category }} flash-message">
+        {{ message }}
+        <span class="close-btn">X</span>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
 {% endwith %}
 {% block content %}{% endblock %}
 <script src="{{ url_for('static', filename='scripts.js') }}"></script>
