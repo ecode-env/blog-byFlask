@@ -474,3 +474,9 @@ body {
         margin-top: 0.5rem;
     }
 }
+/* CKEDITOR  */
+.ckeditor-content img {
+    display: block;
+    margin: 0 auto;
+    background-color: red;
+}
