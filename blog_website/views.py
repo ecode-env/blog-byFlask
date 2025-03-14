@@ -94,3 +94,46 @@ def create_comment(post_id):
 
 
     return redirect(request.referrer or url_for('views.home'))
+
+# edit comment
+
+@views.route('/comment/<int:comment_id>/edit', methods=['POST'])
+@login_required
+def edit_comment(comment_id):
+    # Check if comment exists
+    comment = Comment.query.get(comment_id)
+    if not comment:
+        flash('Comment not found', category='error')
+        return redirect(request.referrer)
+
+    # Authorization check
+    if comment.author != current_user.id:
+        flash('You cannot edit another user\'s comment', category='error')
+        return redirect(request.referrer)
+
+    new_text = request.form.get('comment-text', '').strip()
+
+    # Check if new text is empty
+    if not new_text:
+        flash('Comment cannot be empty', category='error')
+        return redirect(request.referrer)
+
+    # Check if the new comment is the same as the old one
+    if new_text == comment.text:
+        flash('No changes made to the comment', category='info')
+        return redirect(request.referrer)
+
+    # Check for length constraints
+    if len(new_text) < 3:
+        flash('Comment must be at least 3 characters long', category='error')
+        return redirect(request.referrer)
+    if len(new_text) > 500:
+        flash('Comment is too long (maximum 500 characters)', category='error')
+        return redirect(request.referrer)
+
+    # Update the comment
+    comment.text = new_text
+    db.session.commit()
+
+    flash('Comment updated successfully', category='success')
+    return redirect(request.referrer)
