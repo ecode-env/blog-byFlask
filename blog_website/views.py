@@ -178,8 +178,7 @@ def like_post(post_id):
     db.session.commit()
     # Redirect to referrer if valid, otherwise home
     referrer = request.referrer or url_for('views.home')
-    if '/post/' in referrer:
-        return redirect(url_for('views.post', post_id=post_id))
+
     return redirect(referrer)
 
 
