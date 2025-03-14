@@ -33,10 +33,10 @@
                 <span style="color: #007bff; font-size: 20px">Written by: {{ post.author.username }}</span>
             </div>
             {% if user.is_admin %}
-            <a class="post-meta" href="/delete-post/{{post.id}}">
-                    <span class="action-span delete-span">
-                        <i class="fa fa-trash"></i>
-                    </span>
+            <a class="post-meta" href="/delete-post/{{ post.id }}">
+                <span class="action-span delete-span">
+                    <i class="fa fa-trash"></i>
+                </span>
             </a>
             {% endif %}
         </div>
