@@ -14,7 +14,7 @@
 
     <!-- Comment form for current user -->
     <div class="comment-area">
-        <form class="comment-form" method="post" action="/post/{{ post.id }}/comment">
+        <form class="comment-form" method="POST" action="/post/comment/{{ post.id }}">
             <textarea name="comment" placeholder="Add a comment..." rows="3"></textarea>
             <button type="submit" class="comment-submit-btn">Submit</button>
         </form>
