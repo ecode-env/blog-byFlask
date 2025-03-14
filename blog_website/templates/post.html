@@ -21,23 +21,45 @@
     </div>
 
     <!-- Existing comments -->
-  <div class="comments-list">
+<div class="comments-list">
     <h3>Comments</h3>
     {% if post.comments %}
     {% for comment in post.comments %}
-    <div class="comment-flex">
+    <div class="comment-flex" data-comment-id="{{ comment.id }}">
         <img src="{{ comment.commented_by.profile_image_url or 'https://via.placeholder.com/40' }}" alt="User Image">
         <div class="comment-content">
+            <!-- Move the checkbox here if the user is the author -->
+            {% if comment.author == current_user.id %}
+            <input type="checkbox" class="edit-toggle" id="edit-{{ comment.id }}" style="display: none;">
+            {% endif %}
             <p>{{ comment.commented_by.username }}</p>
-            <p>{{ comment.text }}</p>
+            <p class="comment-text {% if comment.author == current_user.id %}editable{% endif %}">
+                {{ comment.text }}
+            </p>
+
+            {% if comment.author == current_user.id or current_user.is_admin %}
+            <form class="comment-edit-form" method="post" action="/comment/{{ comment.id }}/edit">
+                <textarea name="comment-text" class="edit-textarea">{{ comment.text }}</textarea>
+                <button type="submit" class="save-btn">Save</button>
+                <button type="button" class="cancel-btn">Cancel</button>
+            </form>
+            {% endif %}
         </div>
+        {% if comment.author == current_user.id %}
+        <div class="dropdown">
+            <i class="fa-solid fa-grip-vertical"></i>
+            <div class="dropdown-menu">
+                <label for="edit-{{ comment.id }}" class="dropdown-item edit-comment-label">Edit</label>
+                <a href="/comment/{{ comment.id }}/delete" class="dropdown-item delete-comment">Delete</a>
+            </div>
+        </div>
+        {% endif %}
     </div>
     {% endfor %}
     {% else %}
-        <p>No comments yet.</p>
+    <p>No comments yet.</p>
     {% endif %}
 </div>
-
     <a href="/home" class="back-link">Back to Home</a>
 </div>
 {% endblock %}
