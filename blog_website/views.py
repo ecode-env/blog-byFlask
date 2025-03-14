@@ -156,4 +156,41 @@ def delete_comment(comment_id):
 
 
 # Like post
+
 @views.route('/like/<int:post_id>')
+@login_required
+def like_post(post_id):
+    post = Post.query.get(post_id)
+    if not post:
+        flash('Post doesn’t exist!', 'error')
+        return redirect(url_for('views.home'))
+
+    like = Like.query.filter_by(author_id=current_user.id, post_id=post_id).first()
+    if like:
+        db.session.delete(like)
+        flash('Post unliked.', 'success')
+    else:
+        like = Like(author_id=current_user.id, post_id=post_id)
+        db.session.add(like)
+        flash('Post liked!', 'success')
+
+    db.session.commit()
+    # Redirect to referrer if valid, otherwise home
+    referrer = request.referrer or url_for('views.home')
+    if '/post/' in referrer:
+        return redirect(url_for('views.post', post_id=post_id))
+    return redirect(referrer)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
