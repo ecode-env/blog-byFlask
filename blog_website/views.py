@@ -57,7 +57,7 @@ def delete_post(id):
             flash('Post not found!', category='error')
             return redirect(url_for('views.home'))
 
-        # Alternative: Delete comments in one query
+
         Comment.query.filter_by(post_id=id).delete()
 
         db.session.delete(post)
