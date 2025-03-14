@@ -12,6 +12,8 @@ class User(db.Model, UserMixin):
     # Relationships: A user can have many posts, comments, and likes.
     posts = db.relationship('Post', backref='author', passive_deletes=True)
     comments = db.relationship('Comment', backref='user', passive_deletes=True)
+    likes = db.relationship('Like', backref='user', passive_deletes=True)
+
     date = db.Column(db.DateTime(timezone=True), default=func.now())
 
 class Post(db.Model):
