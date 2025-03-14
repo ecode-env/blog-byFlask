@@ -18,10 +18,11 @@
             {% endif %}
         </p>
         <div class="post-meta">
-            <div>
-                <span class="action-span like-span" data-likes="{{ post.likes }}">{{ post.likes }} <i class="fa fa-thumbs-up"></i></span>
-                <span class="action-span comment-span" data-comments="{{ post.comments|length }}"><i class="fa fa-comment"></i></span>
-                <span>{{ post.author.name }}</span>
+            <div class="post-meta">
+                <span class="action-span like-span" data-likes="{{ post.likes }}">
+                    {{ post.likes | length }} <i class="fa fa-thumbs-up"></i></span>
+                <span class="action-span comment-span" data-comments="{{ post.comments|length }}">{{ post.comments|length }}<i class="fa fa-comment"></i></span>
+                <span style="color: #007bff;font-size: 20px">Written by: {{ post.author.username }}</span>
             </div>
             {% if user.is_admin %}
             <a href="/delete-post/{{post.id}}">
