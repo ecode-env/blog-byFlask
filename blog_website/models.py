@@ -37,5 +37,13 @@ class Comment(db.Model):
     # Foreign keys to link this comment to the user and post.
     author_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('post.id', ondelete='CASCADE'), nullable=False)
-    commented_by = db.relationship('User', backref='comment',  passive_deletes=True)
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+
+
+class Like(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    # A like associates a user and a post.
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id', ondelete='CASCADE'), nullable=False)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
