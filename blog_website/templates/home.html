@@ -30,7 +30,9 @@
                       data-comments="{{ post.comments|length }}">
                     {{ post.comments|length }} <i class="fa fa-comment"></i>
                 </span>
-                <span style="color: #007bff; font-size: 20px">Written by: {{ post.author.username }}</span>
+                <div id="author-name">
+                    <span class="author">Written by: {{ post.author.username }}</span>
+                </div>
             </div>
             {% if user.is_admin %}
             <a class="post-meta" href="/delete-post/{{ post.id }}">
