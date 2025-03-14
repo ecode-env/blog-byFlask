@@ -145,7 +145,7 @@ def edit_comment(comment_id):
 def delete_comment(comment_id):
     comment = Comment.query.get_or_404(comment_id)
 
-    if comment.author != current_user.id and not current_user.is_admin:
+    if comment.author_id != current_user.id and not current_user.is_admin:
         flash('You do not have permission to delete this comment.', 'error')
         return redirect(request.referrer or url_for('views.home'))
 
