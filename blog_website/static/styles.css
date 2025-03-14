@@ -623,3 +623,16 @@ body {
         margin-top: 0.5rem;
     }
 }
+.like-span {
+    color: gray; /* Unliked */
+}
+
+.like-span.liked {
+    color: #007bff !important;
+}
+.action-span{
+    color: gray;
+}
+.comment-span.commented{
+    color: #007bff !important;
+}
