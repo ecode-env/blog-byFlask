@@ -79,7 +79,18 @@ def create_comment(post_id):
     if not text:
         flash(message='Comment cannot be empty!', category='error')
     else:
-        db.session.delete(post)
-        db.session.commit()
-        flash('Post deleted!', category='success')
-    return redirect(url_for('views.home'))
+        post = Post.query.filter_by(id=post_id).first()
+        if not post:
+            flash(message='Post doesnt exist!', category='error')
+        else:
+            comment = Comment(
+                text=text,
+                author=current_user.id,
+                post_id=post_id
+                )
+            db.session.add(comment)
+            db.session.commit()
+            flash(message='Your comment posted', category='success')
+
+
+    return redirect(request.referrer or url_for('views.home'))
