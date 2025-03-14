@@ -9,7 +9,7 @@
         <span class="action-span like-span" data-likes="{{ post.likes }}">{{ post.likes | length }} <i class="fa fa-thumbs-up"></i></span>
         <span class="action-span comment-span" data-comments="{{ post.comments|length }}">{{ post.comments|length }}<i class="fa fa-comment"></i></span>
 
-<!--        <span>Author: {{ post.author.name }}</span>-->
+        <span>Writen by {{ post.author.username }}</span>
     </div>
 
     <!-- Comment form for current user -->
