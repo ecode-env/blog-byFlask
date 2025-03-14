@@ -28,7 +28,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 60%;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -280,7 +280,15 @@ body {
   color: #666;
   margin-top: 0.5rem;
 }
-
+#author-name .author{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.6em;
+  font-family: "Dancing Script", cursive;
+  color: #8e44ad; /* Purple */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
 .posts-container .post-preview .post-meta span {
   margin-right: 1rem;
 }
