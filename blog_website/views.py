@@ -51,9 +51,33 @@ def post(post_id):
 @login_required
 @admin_required
 def delete_post(id):
-    post =  Post.query.filter_by(id=id).first()
-    if not post:
-        return redirect(url_for('views.home'))
+    try:
+        post = Post.query.filter_by(id=id).first()
+        if not post:
+            flash('Post not found!', category='error')
+            return redirect(url_for('views.home'))
+
+        # Alternative: Delete comments in one query
+        Comment.query.filter_by(post_id=id).delete()
+
+        db.session.delete(post)
+        db.session.commit()
+
+        flash('Post and associated comments deleted!', category='success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'Error deleting post: {str(e)}', category='error')
+
+    return redirect(url_for('views.home'))
+
+# Create comment
+
+@views.route('/post/comment/<post_id>', methods=['GET', 'POST'])
+@login_required
+def create_comment(post_id):
+    text = request.form.get('comment')
+    if not text:
+        flash(message='Comment cannot be empty!', category='error')
     else:
         db.session.delete(post)
         db.session.commit()
