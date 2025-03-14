@@ -315,9 +315,6 @@ body {
     background-color: #ffd6d6;
 }
 
-.posts-container .post-preview .post-meta .comment-span {
-    color: #007bff;
-}
 
 .posts-container .post-preview .post-meta .comment-span:hover {
     background-color: #cce5ff;
