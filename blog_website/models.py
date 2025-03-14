@@ -24,6 +24,8 @@ class Post(db.Model):
     # Foreign key linking to the User (author) who created this post.
     author_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
+
+    # One-to-many: A post can have many comments and likes.
     comments = db.relationship('Comment', backref='post', passive_deletes=True)
 
 
