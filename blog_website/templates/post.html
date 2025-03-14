@@ -16,8 +16,8 @@
         <span class="action-span comment-span {% if current_user.id in post.comments | map(attribute='author_id') %}commented{% endif %}"
               data-comments="{{ post.comments | length }}">
         {{ post.comments | length }} <i class="fa fa-comment"></i>
-    </span>
-        <span>Written by {{ post.author.username }}</span>
+        </span>
+        <div id="author-name"><span class="author">Written by {{ post.author.username }}</span></div>
     </div>
 
     <!-- Comment Form -->
