@@ -39,3 +39,13 @@ document.querySelectorAll('.like-span').forEach(span => {
         span.firstChild.textContent = likes;
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.cancel-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const checkbox = this.closest('.comment-content').querySelector('.edit-toggle');
+            if (checkbox) {
+                checkbox.checked = false; // Unchecks the checkbox, hiding the form
+            }
+        });
+    });
+});
