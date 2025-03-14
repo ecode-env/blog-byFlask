@@ -137,3 +137,19 @@ def edit_comment(comment_id):
 
     flash('Comment updated successfully', category='success')
     return redirect(request.referrer)
+
+# delete comment
+
+@views.route('/comment/<int:comment_id>/delete')
+@login_required
+def delete_comment(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+
+    if comment.author != current_user.id and not current_user.is_admin:
+        flash('You do not have permission to delete this comment.', 'error')
+        return redirect(request.referrer or url_for('views.home'))
+
+    db.session.delete(comment)
+    db.session.commit()
+    flash('Comment deleted successfully.', 'success')
+    return redirect(request.referrer or url_for('views.home'))
