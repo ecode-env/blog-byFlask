@@ -37,7 +37,7 @@
                 {{ comment.text }}
             </p>
 
-            {% if comment.author == current_user.id or current_user.is_admin %}
+            {% if comment.author == current_user.id or comment.author.is_admin %}
             <form class="comment-edit-form" method="post" action="/comment/{{ comment.id }}/edit">
                 <textarea name="comment-text" class="edit-textarea">{{ comment.text }}</textarea>
                 <button type="submit" class="save-btn">Save</button>
@@ -45,7 +45,7 @@
             </form>
             {% endif %}
         </div>
-        {% if comment.author == current_user.id %}
+        {% if comment.author == current_user.id or current_user.is_admin %}
         <div class="dropdown">
             <i class="fa-solid fa-grip-vertical"></i>
             <div class="dropdown-menu">
