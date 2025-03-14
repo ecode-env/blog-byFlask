@@ -8,7 +8,9 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(150), unique=True)
     password = db.Column(db.String)
     is_admin = db.Column(db.Boolean, default=False)  # Admin field
-    post = db.relationship('Post', backref='user', passive_deletes=True)
+
+    # Relationships: A user can have many posts, comments, and likes.
+    posts = db.relationship('Post', backref='author', passive_deletes=True)
     comments = db.relationship('Comment', backref='user', passive_deletes=True)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
 
