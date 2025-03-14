@@ -107,7 +107,7 @@ def edit_comment(comment_id):
         return redirect(request.referrer)
 
     # Authorization check
-    if comment.author != current_user.id:
+    if comment.author_id != current_user.id:
         flash('You cannot edit another user\'s comment', category='error')
         return redirect(request.referrer)
 
