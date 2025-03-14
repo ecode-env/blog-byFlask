@@ -30,7 +30,7 @@ def create_post():
             post = Post(
                 title=title,
                 text=content,
-                author=current_user.id
+                author_id=current_user.id
             )
             db.session.add(post)
             db.session.commit()
