@@ -59,6 +59,7 @@ def delete_post(id):
 
 
         Comment.query.filter_by(post_id=id).delete()
+        Like.query.filter_by(post_id=id).delete()
 
         db.session.delete(post)
         db.session.commit()
