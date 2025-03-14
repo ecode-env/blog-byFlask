@@ -153,3 +153,6 @@ def delete_comment(comment_id):
     db.session.commit()
     flash('Comment deleted successfully.', 'success')
     return redirect(request.referrer or url_for('views.home'))
+
+
+# Like post
