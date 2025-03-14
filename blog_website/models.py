@@ -16,6 +16,15 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String, nullable=False)
     title = db.Column(db.String, nullable=False)
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
+    author = db.relationship('User', backref='posts')
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    comments = db.relationship('Comment', backref='post', passive_deletes=True)
+
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String, nullable=False)
     author = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('post.id', ondelete='CASCADE'), nullable=False)
     commented_by = db.relationship('User', backref='comment',  passive_deletes=True)
