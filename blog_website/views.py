@@ -156,3 +156,4 @@ def delete_comment(comment_id):
 
 
 # Like post
+@views.route('/like/<int:post_id>')
