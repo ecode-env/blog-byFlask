@@ -21,10 +21,11 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
-.navbar .navbar-brand a{
+.navbar .navbar-brand a {
     text-decoration: none;
     color: inherit;
 }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -227,6 +228,7 @@ body {
     margin-bottom: 2rem;
     color: #333;
 }
+
 .posts-container .post-preview {
     background-color: #fff;
     border-radius: 5px;
@@ -278,16 +280,15 @@ body {
 
 .posts-container .post-preview .post-meta .action-span {
     background-color: #f0f0f0;
+    font-size: 20px;
     color: #666;
-    padding: 0.5rem;
-    border-radius: 50%;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
+    gap: 0.3rem;
 }
 
 .posts-container .post-preview .post-meta .like-span {
@@ -324,6 +325,8 @@ body {
 
 .posts-container .post-preview .post-meta .delete-span {
     color: #dc3545;
+    padding: 0.58rem 1rem;
+    border-radius: 25px;
 }
 
 .posts-container .post-preview .post-meta .delete-span:hover {
@@ -417,22 +420,142 @@ body {
     background-color: #e0e0e0;
 }
 
-.post-container .comments-list {
-    margin: 1rem 0;
+/* Comment style */
+.comments-list {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.post-container .comments-list h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+.comments-list h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
     color: #333;
 }
 
-.post-container .comments-list p {
-    margin: 0.5rem 0;
-    color: #555;
-    padding: 0.5rem;
-    background-color: #f9f9f9;
+.comment-flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+.comment-flex:last-child {
+    border-bottom: none;
+}
+
+.comment-flex img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.comment-content p {
+    margin: 2px 0;
+    font-size: 14px;
+    color: #444;
+}
+
+.comment-content p:first-of-type {
+    font-weight: bold;
+    color: #222;
+}
+
+/* Dropdown styles */
+.comment-flex .dropdown {
+    position: relative;
+}
+
+.comment-flex .dropdown-toggle {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.comment-flex .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
     border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 100px;
+}
+
+.comment-flex:hover .dropdown-menu {
+    display: block;
+}
+
+.comment-flex .dropdown-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #333;
+    text-decoration: none;
+}
+
+.comment-flex .dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Edit comment styles */
+.comment-content .comment-edit-form {
+    display: none; /* Hidden by default */
+}
+
+.comment-content .edit-textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    resize: vertical;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #444;
+}
+
+.comment-content .save-btn,
+.comment-content .cancel-btn {
+    padding: 0.3rem 0.8rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.comment-content .save-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.comment-content .save-btn:hover {
+    background-color: #0056b3;
+}
+
+.comment-content .cancel-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.comment-content .cancel-btn:hover {
+    background-color: #b02a37;
 }
 
 .post-container .back-link {
@@ -445,7 +568,26 @@ body {
 .post-container .back-link:hover {
     text-decoration: underline;
 }
+/* Ensure the checkbox is hidden */
+.comment-content .edit-toggle {
+    display: none;
+}
 
+/* Show comment text by default, hide when checkbox is checked */
+.comment-content .comment-text {
+    display: block;
+}
+.comment-content .edit-toggle:checked ~ .comment-text {
+    display: none;
+}
+
+/* Hide edit form by default, show when checkbox is checked */
+.comment-content .comment-edit-form {
+    display: none;
+}
+.comment-content .edit-toggle:checked ~ .comment-edit-form {
+    display: block;
+}
 /* Responsive adjustments */
 @media (max-width: 768px) {
     body {
