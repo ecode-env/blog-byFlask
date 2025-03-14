@@ -27,6 +27,7 @@ class Post(db.Model):
 
     # One-to-many: A post can have many comments and likes.
     comments = db.relationship('Comment', backref='post', passive_deletes=True)
+    likes = db.relationship('Like', backref='post', passive_deletes=True)
 
 
 class Comment(db.Model):
