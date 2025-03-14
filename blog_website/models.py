@@ -20,6 +20,8 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String, nullable=False)
     title = db.Column(db.String, nullable=False)
+
+    # Foreign key linking to the User (author) who created this post.
     author_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
     author = db.relationship('User', backref='posts')
     date = db.Column(db.DateTime(timezone=True), default=func.now())
