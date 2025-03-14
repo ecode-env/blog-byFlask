@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 from .decorators import admin_required
-from .models import Post, Comment
+from .models import Post, Comment, Like
 from . import db
 
 views = Blueprint("views", __name__)
