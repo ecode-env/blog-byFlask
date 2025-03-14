@@ -24,21 +24,6 @@ document.querySelectorAll('.comment-span').forEach(span => {
         }
     });
 });
-
-// Like toggle
-document.querySelectorAll('.like-span').forEach(span => {
-    span.addEventListener('click', () => {
-        span.classList.toggle('clicked');
-        let likes = parseInt(span.getAttribute('data-likes'));
-        if (span.classList.contains('clicked')) {
-            likes += 1;
-        } else {
-            likes -= 1;
-        }
-        span.setAttribute('data-likes', likes);
-        span.firstChild.textContent = likes;
-    });
-});
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.cancel-btn').forEach(btn => {
         btn.addEventListener('click', function() {
