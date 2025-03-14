@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from os import path
 from flask_ckeditor import CKEditor
+#from flask_gravatar import Gravatar
 
 db = SQLAlchemy()
 DB_NAME = "blog.db"
@@ -15,6 +16,15 @@ def create_app():
     app.config['CKEDITOR_PKG_TYPE'] = 'basic'
     db.init_app(app)
     CKEditor(app)
+    # generate avatar image
+    # gravatar = Gravatar(app,
+    #                     size=100,
+    #                     rating='g',
+    #                     default='retro',
+    #                     force_default=False,
+    #                     force_lower=False,
+    #                     use_ssl=False,
+    #                     base_url=None)
 
     from .views import views
     from .auth import auth
