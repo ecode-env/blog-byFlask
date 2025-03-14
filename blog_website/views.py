@@ -72,7 +72,7 @@ def delete_post(id):
 
 # Create comment
 
-@views.route('/post/comment/<post_id>', methods=['GET', 'POST'])
+@views.route('/post/comment/<int:post_id>', methods=['GET', 'POST'])
 @login_required
 def create_comment(post_id):
     text = request.form.get('comment')
