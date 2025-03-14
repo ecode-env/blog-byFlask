@@ -85,7 +85,7 @@ def create_comment(post_id):
         else:
             comment = Comment(
                 text=text,
-                author=current_user.id,
+                author_id=current_user.id,
                 post_id=post_id
                 )
             db.session.add(comment)
