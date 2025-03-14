@@ -9,6 +9,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String)
     is_admin = db.Column(db.Boolean, default=False)  # Admin field
     post = db.relationship('Post', backref='user', passive_deletes=True)
+    comments = db.relationship('Comment', backref='user', passive_deletes=True)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
 
 class Post(db.Model):
@@ -16,4 +17,6 @@ class Post(db.Model):
     text = db.Column(db.String, nullable=False)
     title = db.Column(db.String, nullable=False)
     author = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id', ondelete='CASCADE'), nullable=False)
+    commented_by = db.relationship('User', backref='comment',  passive_deletes=True)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
