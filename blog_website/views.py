@@ -171,6 +171,7 @@ def delete_comment(comment_id):
 @views.route('/like/<int:post_id>')
 @login_required
 def like_post(post_id):
+
     post = Post.query.get(post_id)
     if not post:
         flash('Post doesn’t exist!', 'error')
