@@ -27,6 +27,7 @@ def login():
                 login_user(user, remember=True)
 
                 return redirect(url_for('views.home'))
+
             else:
                 flash(message='Password is incorrect!', category='error')
         else:
