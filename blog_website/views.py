@@ -49,6 +49,7 @@ def create_post():
 @login_required
 def post(post_id):
     get_post = Post.query.filter_by(id=post_id).first_or_404()
+
     return render_template('post.html', user=current_user, post=get_post)
 
 # Delete route
