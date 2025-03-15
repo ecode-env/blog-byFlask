@@ -58,6 +58,7 @@ def sign_up():
 
         elif password1 != password2:
             flash(message='Passwords do not match.', category='error')
+
         elif len(username) < 3:
             flash(message='Username must be at least 3 characters.', category='error')
         elif not re.match(r'^[\w\.-]+@[\w\.-]+\.\w{2,4}$', email):
