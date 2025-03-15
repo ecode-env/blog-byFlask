@@ -44,6 +44,7 @@ class Comment(db.Model):
 
 
 class Like(db.Model):
+
     id = db.Column(db.Integer, primary_key=True)
 
     # A like associates a user and a post.
