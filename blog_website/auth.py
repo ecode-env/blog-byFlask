@@ -55,6 +55,7 @@ def sign_up():
 
         elif username_exists:
             flash(message='Username is already in use.', category='error')
+
         elif password1 != password2:
             flash(message='Passwords do not match.', category='error')
         elif len(username) < 3:
