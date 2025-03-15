@@ -156,6 +156,7 @@ def delete_comment(comment_id):
 
     if comment.author_id != current_user.id and not current_user.is_admin:
         flash('You do not have permission to delete this comment.', 'error')
+
         return redirect(request.referrer or url_for('views.home'))
 
     db.session.delete(comment)
