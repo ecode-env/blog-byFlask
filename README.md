@@ -12,6 +12,7 @@
 - Responsive UI: Styled with CSS and Font Awesome icons.
 - Server-Side Rendering: No heavy JavaScript, all Flask-powered.
 ---
+
 ## Tech Stack
 - Backend: Flask (Python), SQLAlchemy (ORM)
 - Frontend: Jinja2 templates, HTML, CSS, minimal JavaScript
