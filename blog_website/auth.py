@@ -64,6 +64,7 @@ def sign_up():
 
         elif not re.match(r'^[\w\.-]+@[\w\.-]+\.\w{2,4}$', email):
             flash(message='Invalid email format.', category='error')
+
         elif len(password1) < 6:
             flash(message='Password must be at least 6 characters.', category='error')
         else:
