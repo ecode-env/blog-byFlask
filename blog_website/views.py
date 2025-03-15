@@ -30,6 +30,7 @@ def create_post():
 
         if not title:
             flash(message='Title cannot be empty!', category='error')
+
         else:
             post = Post(
                 title=title,
