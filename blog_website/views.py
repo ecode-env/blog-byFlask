@@ -72,6 +72,7 @@ def delete_post(id):
         db.session.commit()
 
         flash('Post and associated comments deleted!', category='success')
+
     except Exception as e:
         db.session.rollback()
         flash(f'Error deleting post: {str(e)}', category='error')
