@@ -21,6 +21,7 @@ def home():
 @admin_required
 def create_post():
     if request.method == 'POST':
+
         content = request.form.get('content')
         title = request.form.get('title')
 
