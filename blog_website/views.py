@@ -40,6 +40,7 @@ def create_post():
             db.session.add(post)
             db.session.commit()
             flash(message='Post Created', category='success')
+
             return redirect(url_for('views.home'))
 
     return render_template('create_post.html', user=current_user)
