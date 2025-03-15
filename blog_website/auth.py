@@ -52,6 +52,7 @@ def sign_up():
         # Validation checks
         if email_exists:
             flash(message='Email already exists. Please login.', category='error')
+
         elif username_exists:
             flash(message='Username is already in use.', category='error')
         elif password1 != password2:
