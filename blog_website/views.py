@@ -27,6 +27,7 @@ def create_post():
 
         if not content:
             flash(message='Content cannot be empty!', category='error')
+
         if not title:
             flash(message='Title cannot be empty!', category='error')
         else:
