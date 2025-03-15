@@ -25,6 +25,7 @@ document.querySelectorAll('.comment-span').forEach(span => {
     });
 });
 
+//
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.cancel-btn').forEach(btn => {
         btn.addEventListener('click', function() {
