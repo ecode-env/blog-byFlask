@@ -13,6 +13,7 @@ document.querySelectorAll('.flash-message').forEach(function(message) {
     }
 });
 
+
 // Comment area toggle
 document.querySelectorAll('.comment-span').forEach(span => {
     span.addEventListener('click', () => {
