@@ -11,6 +11,7 @@
 - Admin Privileges: Delete posts and manage comments.
 - Responsive UI: Styled with CSS and Font Awesome icons.
 - Server-Side Rendering: No heavy JavaScript, all Flask-powered.
+
 ---
 
 ## Tech Stack
