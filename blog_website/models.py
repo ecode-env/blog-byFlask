@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     likes = db.relationship('Like', backref='user', passive_deletes=True)
 
     date = db.Column(db.DateTime(timezone=True), default=func.now())
+    
 
 class Post(db.Model):
 
