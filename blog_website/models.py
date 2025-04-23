@@ -44,6 +44,7 @@ class Comment(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
 
 
+
 class Like(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
