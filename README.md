@@ -3,6 +3,7 @@
 
 ---
 
+
 ## Features
 - User Authentication: Secure registration, login, and logout with Flask-Login.
 - Post Management: View posts on the home page and full details on individual pages.
